@@ -1,0 +1,201 @@
+{
+  "_INSTRUCCIONES": "Edita SOLO los valores entre comillas. NO toques los nombres de los campos. NO uses Word para editar este archivo (usa Bloc de notas, TextEdit en modo texto plano, o VS Code). Después de editar, corre: python3 generate.py",
+
+  "empresa": {
+    "nombre_comercial": "SHENCOM",
+    "razon_social": "PEGAR_AQUI_RAZON_SOCIAL",
+    "ruc": "1717489031001",
+    "tagline": "Distribuidor Autorizado de Claro en Ecuador",
+    "anio_fundacion": "2015",
+    "telefono_principal": "+593-98-149-9669",
+    "whatsapp_e164": "+593981499669",
+    "email_ventas": "ventas@shencom.ec",
+    "email_soporte": "soporte@shencom.ec",
+    "direccion_matriz": "PEGAR_AQUI_DIRECCION_COMPLETA",
+    "ciudad_matriz": "Quito",
+    "horario_atencion": "Lunes a Viernes 09:00 - 18:00 / Sábados 09:00 - 13:00"
+  },
+
+  "sitio": {
+    "dominio": "https://shencom.ec",
+    "titulo_marca": "SHENCOM | Distribuidor Autorizado de Claro Ecuador",
+    "descripcion_meta": "Distribuidor autorizado de Claro Ecuador. Planes pospago, internet hogar y servicios empresariales con instalación en todo el país.",
+    "color_primario": "#E60026",
+    "color_secundario": "#1A1A1A",
+    "google_analytics_id": "G-XXXXXXXXXX",
+    "google_search_console_token": "PEGAR_AQUI_META_TAG_DE_VERIFICACION"
+  },
+
+  "telefonos_zonales": {
+    "Quito": "+593-98-149-9669",
+    "Guayaquil": "+593-98-149-9669",
+    "Cuenca": "+593-98-149-9669",
+    "Santo Domingo": "+593-98-149-9669",
+    "Machala": "+593-98-149-9669",
+    "Manta": "+593-98-149-9669",
+    "Portoviejo": "+593-98-149-9669",
+    "Ambato": "+593-98-149-9669",
+    "Riobamba": "+593-98-149-9669",
+    "Loja": "+593-98-149-9669",
+    "Esmeraldas": "+593-98-149-9669",
+    "Ibarra": "+593-98-149-9669",
+    "Latacunga": "+593-98-149-9669",
+    "Quevedo": "+593-98-149-9669",
+    "Babahoyo": "+593-98-149-9669"
+  },
+
+  "_NOTA_PLANES": "Cada plan tiene: nombre, precio_usd (precio actual), precio_anterior_usd (0 si no hay descuento), badge (texto opcional como 'AHORRA 30%' o 'NUEVO' — vacío para no mostrar), destacado (true/false), beneficios (lista de bullets editables). Para añadir un plan: copia un bloque y pégalo en la lista. Para quitarlo: borra el bloque (incluyendo la coma).",
+
+  "planes_internet_hogar": [
+    {
+      "nombre": "Claro Hogar 50 Mbps",
+      "velocidad_mbps": 50,
+      "precio_usd": 19.90,
+      "precio_anterior_usd": 0,
+      "badge": "",
+      "destacado": false,
+      "beneficios": [
+        "50 Mbps simétricos",
+        "WiFi de alta cobertura incluido",
+        "Instalación profesional",
+        "Soporte técnico 24/7"
+      ]
+    },
+    {
+      "nombre": "Claro Hogar 100 Mbps",
+      "velocidad_mbps": 100,
+      "precio_usd": 24.90,
+      "precio_anterior_usd": 32.90,
+      "badge": "AHORRA 24%",
+      "destacado": true,
+      "beneficios": [
+        "100 Mbps simétricos",
+        "Router WiFi 6 incluido",
+        "Instalación gratuita",
+        "Soporte técnico 24/7",
+        "Claro Video por 3 meses"
+      ]
+    },
+    {
+      "nombre": "Claro Hogar 200 Mbps",
+      "velocidad_mbps": 200,
+      "precio_usd": 29.90,
+      "precio_anterior_usd": 0,
+      "badge": "",
+      "destacado": false,
+      "beneficios": [
+        "200 Mbps simétricos",
+        "Router WiFi 6 dual band",
+        "Ideal para teletrabajo y streaming 4K",
+        "Soporte técnico 24/7"
+      ]
+    },
+    {
+      "nombre": "Claro Hogar 400 Mbps",
+      "velocidad_mbps": 400,
+      "precio_usd": 39.90,
+      "precio_anterior_usd": 0,
+      "badge": "MÁXIMA VELOCIDAD",
+      "destacado": false,
+      "beneficios": [
+        "400 Mbps simétricos",
+        "Router WiFi 6 premium",
+        "Ideal para gaming y oficinas",
+        "IP fija opcional"
+      ]
+    }
+  ],
+
+  "planes_pospago_movil": [
+    {
+      "nombre": "Plan Claro 350",
+      "datos_gb": 15,
+      "minutos": "Ilimitados",
+      "precio_usd": 15.90,
+      "precio_anterior_usd": 0,
+      "badge": "",
+      "destacado": false,
+      "beneficios": [
+        "15 GB de datos móviles",
+        "Minutos ilimitados a Ecuador",
+        "SMS ilimitados",
+        "Roaming Latam disponible"
+      ]
+    },
+    {
+      "nombre": "Plan Claro 450",
+      "datos_gb": 25,
+      "minutos": "Ilimitados",
+      "precio_usd": 19.90,
+      "precio_anterior_usd": 0,
+      "badge": "MÁS POPULAR",
+      "destacado": true,
+      "beneficios": [
+        "25 GB de datos móviles",
+        "Minutos ilimitados a Ecuador",
+        "Apps gratis: WhatsApp, Waze, Uber",
+        "Claro Video incluido"
+      ]
+    },
+    {
+      "nombre": "Plan Claro 550",
+      "datos_gb": 40,
+      "minutos": "Ilimitados",
+      "precio_usd": 24.90,
+      "precio_anterior_usd": 0,
+      "badge": "",
+      "destacado": false,
+      "beneficios": [
+        "40 GB de datos móviles",
+        "Minutos ilimitados a Ecuador y EE.UU.",
+        "Apps sociales sin costo de datos",
+        "Claro Música y Claro Video"
+      ]
+    },
+    {
+      "nombre": "Plan Claro 750",
+      "datos_gb": 100,
+      "minutos": "Ilimitados",
+      "precio_usd": 32.90,
+      "precio_anterior_usd": 0,
+      "badge": "PREMIUM",
+      "destacado": false,
+      "beneficios": [
+        "100 GB de datos móviles",
+        "Minutos ilimitados internacional",
+        "5G donde haya cobertura",
+        "Claro Video y Disney+ por 6 meses"
+      ]
+    }
+  ],
+
+  "_NOTA_PROMOCIONES": "Lista de banners promocionales. Solo se muestran los que tengan activo:true. Puedes tener varios activos simultáneamente — se mostrarán apilados en la parte superior. Para desactivar una promo, cambia activo a false (no la borres, así puedes reactivarla luego).",
+
+  "promociones": [
+    {
+      "activo": false,
+      "texto": "🌹 Día de la Madre: 30% OFF en el primer mes de cualquier plan",
+      "url": "#planes",
+      "color_fondo": "#E60026"
+    },
+    {
+      "activo": false,
+      "texto": "📦 Instalación GRATIS este mes en todo Ecuador",
+      "url": "#contacto",
+      "color_fondo": "#1A1A1A"
+    },
+    {
+      "activo": false,
+      "texto": "🏢 Empresas: solicita auditoría de telefonía gratuita",
+      "url": "#contacto",
+      "color_fondo": "#0066CC"
+    }
+  ],
+
+  "redes_sociales": {
+    "facebook": "https://facebook.com/shencom",
+    "instagram": "https://instagram.com/shencom",
+    "tiktok": "",
+    "youtube": ""
+  }
+}

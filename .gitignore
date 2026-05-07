@@ -1,0 +1,25 @@
+# Sistema operativo
+.DS_Store
+Thumbs.db
+
+# Editores
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+
+# Claude Code (config local)
+.claude/
+
+# OPCIONAL: si subes solo el código fuente y dejas que Netlify ejecute
+# 'python3 generate.py' como build, descomenta la siguiente línea para
+# NO versionar la salida generada. Por ahora la incluimos para que el
+# deploy sea inmediato sin configurar build commands.
+# dist/
