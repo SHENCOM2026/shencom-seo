@@ -173,22 +173,28 @@
 
   "promociones": [
     {
-      "activo": false,
-      "texto": "🌹 Día de la Madre: 30% OFF en el primer mes de cualquier plan",
+      "activo": true,
+      "texto": "🌹 Día de la Madre: Internet Hogar 850 Mbps + Telefonía + Redes Ilimitadas desde $23 (precio final). Vigente hasta 31 de mayo.",
       "url": "#planes",
       "color_fondo": "#E60026"
     },
     {
-      "activo": false,
-      "texto": "📦 Instalación GRATIS este mes en todo Ecuador",
-      "url": "#contacto",
+      "activo": true,
+      "texto": "🎁 Full Claro: Internet + TV + Móvil con Gift Card de $250 para nuevos equipos. Ahorra hasta $983 en 3 años.",
+      "url": "#planes",
       "color_fondo": "#1A1A1A"
     },
     {
-      "activo": false,
-      "texto": "🏢 Empresas: solicita auditoría de telefonía gratuita",
+      "activo": true,
+      "texto": "📦 Instalación 100% GRATIS + Punto WiFi incluido en todos los planes hogar.",
       "url": "#contacto",
       "color_fondo": "#0066CC"
+    },
+    {
+      "activo": true,
+      "texto": "📱 Cámbiate a Claro: 15% de descuento por 3 meses por portabilidad en planes pospago.",
+      "url": "#contacto",
+      "color_fondo": "#E60026"
     }
   ],
 
