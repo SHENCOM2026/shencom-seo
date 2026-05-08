@@ -48,123 +48,135 @@
 
   "planes_internet_hogar": [
     {
-      "nombre": "Claro Hogar 50 Mbps",
-      "velocidad_mbps": 50,
-      "precio_usd": 19.90,
+      "nombre": "Claro Hogar 300 Mbps",
+      "velocidad_mbps": 300,
+      "precio_usd": 23.00,
       "precio_anterior_usd": 0,
       "badge": "",
       "destacado": false,
       "beneficios": [
-        "50 Mbps simétricos",
-        "WiFi de alta cobertura incluido",
-        "Instalación profesional",
-        "Soporte técnico 24/7"
+        "300 Mbps fibra óptica (compartición 2:1)",
+        "Telefonía fija ilimitada incluida",
+        "Claro Video + 12 canales locales",
+        "1 Punto WiFi incluido",
+        "+20 GB para redes si tienes plan móvil",
+        "Instalación 100% gratis"
       ]
     },
     {
-      "nombre": "Claro Hogar 100 Mbps",
-      "velocidad_mbps": 100,
-      "precio_usd": 24.90,
-      "precio_anterior_usd": 32.90,
-      "badge": "AHORRA 24%",
+      "nombre": "Claro Hogar 550 Mbps",
+      "velocidad_mbps": 550,
+      "precio_usd": 28.75,
+      "precio_anterior_usd": 0,
+      "badge": "AHORA CON REDES ILIMITADAS",
       "destacado": true,
       "beneficios": [
-        "100 Mbps simétricos",
-        "Router WiFi 6 incluido",
-        "Instalación gratuita",
-        "Soporte técnico 24/7",
-        "Claro Video por 3 meses"
+        "550 Mbps fibra óptica (compartición 2:1)",
+        "Telefonía fija ilimitada",
+        "Redes sociales ilimitadas (con plan móvil)",
+        "HBO Max y Amazon Prime incluidos",
+        "1 Punto WiFi premium",
+        "Instalación 100% gratis"
       ]
     },
     {
-      "nombre": "Claro Hogar 200 Mbps",
-      "velocidad_mbps": 200,
-      "precio_usd": 29.90,
+      "nombre": "Claro Hogar 850 Mbps + TV",
+      "velocidad_mbps": 850,
+      "precio_usd": 32.20,
       "precio_anterior_usd": 0,
-      "badge": "",
+      "badge": "3 PLAY",
       "destacado": false,
       "beneficios": [
-        "200 Mbps simétricos",
-        "Router WiFi 6 dual band",
-        "Ideal para teletrabajo y streaming 4K",
-        "Soporte técnico 24/7"
+        "850 Mbps fibra óptica (compartición 2:1)",
+        "TV Streaming con 91 canales",
+        "Telefonía fija ilimitada",
+        "Redes ilimitadas (con plan móvil)",
+        "Claro Video, HBO Max y Amazon Prime",
+        "Instalación 100% gratis"
       ]
     },
     {
-      "nombre": "Claro Hogar 400 Mbps",
-      "velocidad_mbps": 400,
-      "precio_usd": 39.90,
+      "nombre": "Claro Hogar 1 Gbps + TV",
+      "velocidad_mbps": 1024,
+      "precio_usd": 37.95,
       "precio_anterior_usd": 0,
       "badge": "MÁXIMA VELOCIDAD",
       "destacado": false,
       "beneficios": [
-        "400 Mbps simétricos",
-        "Router WiFi 6 premium",
-        "Ideal para gaming y oficinas",
-        "IP fija opcional"
+        "1 Gbps fibra óptica (compartición 2:1)",
+        "TV Streaming con 91 canales",
+        "Telefonía fija ilimitada",
+        "Redes ilimitadas (con plan móvil)",
+        "Ideal para gaming, teletrabajo y streaming 4K",
+        "HBO Max, Amazon Prime y Claro Video incluidos",
+        "Instalación 100% gratis"
       ]
     }
   ],
 
   "planes_pospago_movil": [
     {
-      "nombre": "Plan Claro 350",
-      "datos_gb": 15,
-      "minutos": "Ilimitados",
-      "precio_usd": 15.90,
+      "nombre": "Plan Plus Max 14",
+      "datos_gb": 38,
+      "minutos": "150 multidestino",
+      "precio_usd": 16.10,
       "precio_anterior_usd": 0,
       "badge": "",
       "destacado": false,
       "beneficios": [
-        "15 GB de datos móviles",
-        "Minutos ilimitados a Ecuador",
-        "SMS ilimitados",
-        "Roaming Latam disponible"
+        "15 GB libres + 15 GB WhatsApp + 10 GB extras (38 GB totales)",
+        "150 minutos multidestino + ilimitados a Claro",
+        "WhatsApp chat, llamadas y videollamadas sin consumir datos",
+        "Claro Música y Claro Video incluidos",
+        "Suscripción a 1 plataforma de streaming"
       ]
     },
     {
-      "nombre": "Plan Claro 450",
-      "datos_gb": 25,
-      "minutos": "Ilimitados",
-      "precio_usd": 19.90,
+      "nombre": "Plan Plus Max 18",
+      "datos_gb": 30,
+      "minutos": "400 multidestino + 50 LDI",
+      "precio_usd": 20.70,
       "precio_anterior_usd": 0,
-      "badge": "MÁS POPULAR",
-      "destacado": true,
-      "beneficios": [
-        "25 GB de datos móviles",
-        "Minutos ilimitados a Ecuador",
-        "Apps gratis: WhatsApp, Waze, Uber",
-        "Claro Video incluido"
-      ]
-    },
-    {
-      "nombre": "Plan Claro 550",
-      "datos_gb": 40,
-      "minutos": "Ilimitados",
-      "precio_usd": 24.90,
-      "precio_anterior_usd": 0,
-      "badge": "",
+      "badge": "MÁS GIGAS",
       "destacado": false,
       "beneficios": [
-        "40 GB de datos móviles",
-        "Minutos ilimitados a Ecuador y EE.UU.",
-        "Apps sociales sin costo de datos",
+        "20 GB libres + 10 GB WhatsApp (30 GB totales)",
+        "400 min multidestino + 50 min Larga Distancia Internacional",
+        "Redes sociales ilimitadas",
+        "WhatsApp ilimitado dentro y fuera del país",
         "Claro Música y Claro Video"
       ]
     },
     {
-      "nombre": "Plan Claro 750",
-      "datos_gb": 100,
-      "minutos": "Ilimitados",
-      "precio_usd": 32.90,
+      "nombre": "Plan Plus Max 25",
+      "datos_gb": 50,
+      "minutos": "Ilimitados + 100 LDI",
+      "precio_usd": 28.75,
+      "precio_anterior_usd": 0,
+      "badge": "HBO MAX INCLUIDO",
+      "destacado": true,
+      "beneficios": [
+        "30 GB libres + 20 GB redes (50 GB totales)",
+        "Minutos ilimitados multidestino + 100 min LDI",
+        "Redes sociales ilimitadas",
+        "HBO Max permanente incluido (sin caducidad)",
+        "WhatsApp ilimitado dentro y fuera del país"
+      ]
+    },
+    {
+      "nombre": "Plan Plus Max 40",
+      "datos_gb": 95,
+      "minutos": "Ilimitados + 100 LDI",
+      "precio_usd": 46.00,
       "precio_anterior_usd": 0,
       "badge": "PREMIUM",
       "destacado": false,
       "beneficios": [
-        "100 GB de datos móviles",
-        "Minutos ilimitados internacional",
-        "5G donde haya cobertura",
-        "Claro Video y Disney+ por 6 meses"
+        "55 GB libres + 40 GB extras (95 GB totales)",
+        "Minutos ilimitados multidestino + 100 min LDI",
+        "Roaming con navegación libre",
+        "3 suscripciones premium: HBO Max + Amazon Prime + 1 más",
+        "WhatsApp ilimitado dentro y fuera del país"
       ]
     }
   ],
