@@ -3,15 +3,15 @@
 
   "empresa": {
     "nombre_comercial": "SHENCOM",
-    "razon_social": "PEGAR_AQUI_RAZON_SOCIAL",
-    "ruc": "1717489031001",
+    "razon_social": "Diego Flores",
+    "ruc": "1719444026001",
     "tagline": "Distribuidor Autorizado de Claro en Ecuador",
     "anio_fundacion": "2015",
     "telefono_principal": "+593-98-149-9669",
     "whatsapp_e164": "+593981499669",
     "email_ventas": "ventas@shencom.ec",
     "email_soporte": "soporte@shencom.ec",
-    "direccion_matriz": "PEGAR_AQUI_DIRECCION_COMPLETA",
+    "direccion_matriz": "La Prensa y Homero Salas, Centro Comercial Bicentenario Plaza, Local 3, Quito",
     "ciudad_matriz": "Quito",
     "horario_atencion": "Lunes a Viernes 09:00 - 18:00 / Sábados 09:00 - 13:00"
   },
