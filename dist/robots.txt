@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://shencom.ec/sitemap.xml
+Sitemap: https://shencom.com/sitemap.xml
