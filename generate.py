@@ -37,7 +37,7 @@ def fmt_phone_link(phone: str) -> str:
     return "".join(c for c in phone if c.isdigit() or c == "+")
 
 
-def wa_link(e164: str, msg: str = "Hola SHENCOM, deseo información sobre planes Claro.") -> str:
+def wa_link(e164: str, msg: str = "Hola, deseo información sobre planes Claro Ecuador.") -> str:
     """Construye URL de WhatsApp con mensaje predefinido."""
     digits = "".join(c for c in e164 if c.isdigit())
     return f"https://wa.me/{digits}?text={msg.replace(' ', '%20')}"
@@ -108,8 +108,11 @@ header.site {
   position: sticky; top: 0; z-index: 100;
 }
 header.site .wrap { max-width: var(--max-w); margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 14px 24px; gap: 24px; }
-header.site .logo { font-weight: 800; font-size: 22px; color: var(--ink); letter-spacing: -0.02em; display: flex; align-items: center; gap: 8px; }
-header.site .logo .dot { width: 10px; height: 10px; border-radius: 50%; background: var(--brand); }
+header.site .logo { color: var(--ink); letter-spacing: -0.01em; display: flex; align-items: center; gap: 10px; line-height: 1.1; }
+header.site .logo .dot { width: 10px; height: 10px; border-radius: 50%; background: var(--brand); flex-shrink: 0; }
+header.site .logo .logo-text { display: flex; flex-direction: column; gap: 1px; }
+header.site .logo .logo-text strong { font-weight: 800; font-size: 14.5px; color: var(--ink); letter-spacing: -0.01em; text-transform: uppercase; line-height: 1.1; }
+header.site .logo .logo-text em { font-style: normal; font-weight: 600; font-size: 11.5px; color: var(--brand); letter-spacing: 0.02em; text-transform: uppercase; line-height: 1.1; }
 header.site nav { display: flex; align-items: center; gap: 4px; }
 header.site nav a { color: var(--gray-700); font-weight: 500; font-size: 14.5px; padding: 8px 14px; border-radius: var(--radius-sm); }
 header.site nav a:hover { color: var(--ink); background: var(--gray-100); }
@@ -200,6 +203,9 @@ section.dark .section-eyebrow { color: #FF3650; }
 .plan-card.destacado .btn-plan:hover, .plan-card.destacado-custom .btn-plan:hover { background: var(--brand-dark); }
 
 .plan-badge { position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: var(--brand); color: #fff; font-size: 11px; font-weight: 700; padding: 6px 14px; border-radius: 100px; letter-spacing: 0.04em; box-shadow: 0 4px 12px -2px rgba(230,0,38,.5); white-space: nowrap; }
+.promo-oferta { display: inline-flex; align-items: center; gap: 4px; background: linear-gradient(90deg, #FFE8EC, #FFD3D9); color: #B8001F; border: 1px solid rgba(230,0,38,.20); font-size: 11.5px; font-weight: 700; padding: 6px 12px; border-radius: 100px; margin-bottom: 14px; text-transform: uppercase; letter-spacing: 0.02em; }
+.plan-card.destacado .promo-oferta, .plan-card.destacado-custom .promo-oferta { background: rgba(255,255,255,.10); color: #FF6478; border-color: rgba(255,100,120,.30); }
+.ahorro { display: inline-block; background: var(--success); color: #fff; font-size: 11px; font-weight: 800; padding: 4px 10px; border-radius: 6px; margin: -10px 0 18px; letter-spacing: 0.04em; }
 .plan-card h3 { font-size: 17px; font-weight: 700; letter-spacing: -0.01em; color: var(--ink); margin-bottom: 16px; }
 .plan-card .precio { font-size: 44px; font-weight: 800; color: var(--ink); letter-spacing: -0.03em; line-height: 1; margin: 4px 0 18px; display: flex; align-items: baseline; gap: 6px; flex-wrap: wrap; }
 .plan-card .precio small { font-size: 14px; font-weight: 500; color: var(--gray-500); }
@@ -234,15 +240,39 @@ section.dark .section-eyebrow { color: #FF3650; }
 .compare .yes { color: var(--success); font-weight: 700; }
 .compare .no { color: var(--gray-400); }
 
-/* Testimonios */
-.testimonials { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; }
-.testimonial { padding: 32px; background: #fff; border: 1px solid var(--gray-200); border-radius: var(--radius-lg); }
-.testimonial .stars { color: #F59E0B; font-size: 14px; letter-spacing: 2px; margin-bottom: 14px; }
-.testimonial blockquote { font-size: 16px; line-height: 1.6; color: var(--ink-2); margin-bottom: 22px; font-weight: 500; }
-.testimonial .author { display: flex; align-items: center; gap: 12px; }
-.testimonial .avatar { width: 42px; height: 42px; border-radius: 50%; background: linear-gradient(135deg, var(--brand) 0%, var(--brand-dark) 100%); color: #fff; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 16px; }
-.testimonial .author-info strong { display: block; font-size: 14.5px; color: var(--ink); font-weight: 600; }
-.testimonial .author-info span { font-size: 13px; color: var(--gray-500); }
+/* Destacados strip (banner de 3 productos: Internet, Claro Pay, Empresas) */
+.destacados-strip { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin: -60px auto 0; max-width: var(--max-w); padding: 0 24px; position: relative; z-index: 5; }
+.destacado-card { background: #fff; border: 1px solid var(--gray-200); border-radius: var(--radius-lg); padding: 28px 26px; display: flex; gap: 18px; align-items: flex-start; box-shadow: var(--shadow-lg); transition: all var(--transition); }
+.destacado-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-xl); border-color: var(--brand); }
+.destacado-card .d-icon { width: 48px; height: 48px; border-radius: 12px; background: var(--brand-soft); display: flex; align-items: center; justify-content: center; font-size: 22px; flex-shrink: 0; }
+.destacado-card .d-body { flex: 1; min-width: 0; }
+.destacado-card h3 { font-size: 17px; font-weight: 700; color: var(--ink); margin-bottom: 6px; letter-spacing: -0.01em; }
+.destacado-card p { font-size: 13.5px; color: var(--gray-500); line-height: 1.5; margin-bottom: 14px; }
+.destacado-card .d-meta { display: flex; align-items: center; justify-content: space-between; gap: 8px; flex-wrap: wrap; }
+.destacado-card .d-tag { font-size: 12px; font-weight: 700; color: var(--brand); background: var(--brand-soft); padding: 4px 10px; border-radius: 100px; letter-spacing: 0.02em; }
+.destacado-card .d-cta { font-size: 13px; font-weight: 600; color: var(--ink); }
+.destacado-card:hover .d-cta { color: var(--brand); }
+
+/* Sección Claro Pay */
+.section-claropay { background: linear-gradient(180deg, var(--bg) 0%, #FFF5F6 100%); }
+.claropay-grid { display: grid; grid-template-columns: 1.4fr 1fr; gap: 56px; align-items: start; }
+.claropay-text .section-eyebrow { color: #0066CC; }
+.claropay-text h2 { font-size: clamp(32px, 4vw, 46px); font-weight: 800; line-height: 1.05; letter-spacing: -0.025em; color: var(--ink); margin: 14px 0 18px; }
+.claropay-lead { font-size: 17px; line-height: 1.65; color: var(--gray-700); margin-bottom: 28px; max-width: 580px; }
+.claropay-beneficios { list-style: none; padding: 0; margin: 0 0 32px; display: grid; grid-template-columns: 1fr 1fr; gap: 8px 24px; }
+.claropay-beneficios li { font-size: 14.5px; color: var(--ink-2); padding: 4px 0; font-weight: 500; }
+.claropay-ctas { display: flex; gap: 12px; flex-wrap: wrap; }
+.claropay-card { background: #fff; border: 1px solid var(--gray-200); border-radius: var(--radius-lg); padding: 32px; box-shadow: var(--shadow-lg); }
+.claropay-card-head { margin-bottom: 18px; }
+.claropay-card-head .claropay-chip { display: inline-block; background: #0066CC; color: #fff; font-size: 11px; font-weight: 700; padding: 4px 10px; border-radius: 100px; letter-spacing: 0.04em; text-transform: uppercase; margin-bottom: 10px; }
+.claropay-card-head h3 { font-size: 20px; font-weight: 700; color: var(--ink); letter-spacing: -0.01em; }
+.claropay-quien { list-style: none; padding: 0; margin: 0 0 24px; }
+.claropay-quien li { padding: 11px 0 11px 24px; font-size: 14.5px; color: var(--ink-2); border-top: 1px solid var(--gray-100); position: relative; }
+.claropay-quien li:first-child { border-top: 0; }
+.claropay-quien li::before { content: "›"; position: absolute; left: 4px; top: 9px; color: var(--brand); font-weight: 700; font-size: 18px; }
+.claropay-bullet { background: var(--brand-soft); border-radius: var(--radius-md); padding: 16px; }
+.claropay-bullet strong { display: block; font-size: 14.5px; color: var(--brand-dark); font-weight: 700; margin-bottom: 2px; }
+.claropay-bullet span { font-size: 13px; color: var(--gray-700); }
 
 /* FAQ */
 .faq { max-width: 820px; margin: 0 auto; }
@@ -287,7 +317,12 @@ footer.site .legal { margin-top: 28px; font-size: 13px; color: rgba(255,255,255,
 @keyframes pulse { 0% { transform: scale(.8); opacity: .8; } 100% { transform: scale(1.4); opacity: 0; } }
 
 /* Responsive */
-@media (max-width: 900px) { footer.site .cols { grid-template-columns: 1fr 1fr; gap: 36px; } }
+@media (max-width: 900px) {
+  footer.site .cols { grid-template-columns: 1fr 1fr; gap: 36px; }
+  .destacados-strip { grid-template-columns: 1fr; margin-top: -40px; }
+  .claropay-grid { grid-template-columns: 1fr; gap: 36px; }
+  .claropay-beneficios { grid-template-columns: 1fr; }
+}
 @media (max-width: 720px) {
   section { padding: 64px 20px; }
   .hero { padding: 80px 20px 60px; }
@@ -296,6 +331,8 @@ footer.site .legal { margin-top: 28px; font-size: 13px; color: rgba(255,255,255,
   .compare th, .compare td { padding: 12px 14px; font-size: 13.5px; }
   footer.site .cols { grid-template-columns: 1fr; gap: 32px; }
   footer.site { padding: 48px 20px 24px; }
+  header.site .logo .logo-text strong { font-size: 12.5px; }
+  header.site .logo .logo-text em { font-size: 10.5px; }
 }
 """
 
@@ -335,9 +372,13 @@ def render_header(cfg: dict, is_subpage: bool = False) -> str:
     tel_link = fmt_phone_link(cfg["empresa"]["telefono_principal"])
     return f"""<header class="site">
   <div class="wrap">
-    <a href="{base}index.html" class="logo"><span class="dot"></span>{html.escape(cfg["empresa"]["nombre_comercial"])}</a>
+    <a href="{base}index.html" class="logo">
+      <span class="dot"></span>
+      <span class="logo-text"><strong>Distribuidor Autorizado</strong><em>Claro Ecuador</em></span>
+    </a>
     <nav>
-      <a href="{base}index.html#planes">Planes</a>
+      <a href="{base}index.html#planes">Internet</a>
+      <a href="{base}index.html#claro-pay">Claro Pay</a>
       <a href="{base}index.html#empresas">Empresas</a>
       <a href="{base}index.html#cobertura">Cobertura</a>
       <a href="{base}index.html#faq">FAQ</a>
@@ -377,19 +418,29 @@ def render_planes_grid(cfg: dict, tipo: str = "internet_hogar") -> str:
             if p.get("destacado") and badge_text:
                 clase = "plan-card destacado-custom"
 
-        # Precio anterior tachado (si aplica)
+        # Precio anterior tachado + ahorro (si aplica)
         precio_anterior = p.get("precio_anterior_usd") or 0
         precio_anterior_html = ""
+        ahorro_html = ""
         if precio_anterior and precio_anterior > p["precio_usd"]:
+            ahorro = precio_anterior - p["precio_usd"]
+            pct = round((ahorro / precio_anterior) * 100)
             precio_anterior_html = f'<span class="precio-anterior">${precio_anterior:.2f}</span>'
+            ahorro_html = f'<div class="ahorro">AHORRA ${ahorro:.2f} · {pct}% OFF</div>'
+
+        # Promo destacada (banner rojo encima del precio)
+        promo_oferta = (p.get("promo_oferta") or "").strip()
+        promo_html = f'<div class="promo-oferta">{html.escape(promo_oferta)}</div>' if promo_oferta else ""
 
         # WhatsApp con mensaje específico al plan
-        wa = wa_link(wa_base, f"Hola SHENCOM, deseo contratar el {p['nombre']}.")
+        wa = wa_link(wa_base, f"Hola, deseo contratar el {p['nombre']}.")
 
         cards.append(f"""<div class="{clase}">
   {badge_html}
+  {promo_html}
   <h3>{html.escape(p['nombre'])}</h3>
   <div class="precio">{precio_anterior_html}${p['precio_usd']:.2f}<small>/mes</small></div>
+  {ahorro_html}
   <ul>{items_html}</ul>
   <a class="btn-plan" href="{wa}">Contratar por WhatsApp</a>
 </div>""")
@@ -433,7 +484,7 @@ def render_pymes(cfg: dict) -> str:
     cards = []
     for nombre, gb, mins, precio, beneficios in planes:
         items = "".join(f"<li>{html.escape(b)}</li>" for b in beneficios)
-        wa = wa_link(wa_base, f"Hola SHENCOM, deseo información del {nombre} para mi empresa.")
+        wa = wa_link(wa_base, f"Hola, deseo información del {nombre} para mi empresa.")
         destacado = ' destacado' if "35 Plus" in nombre else ''
         badge = '<span class="plan-badge">RECOMENDADO PYME</span>' if "35 Plus" in nombre else ''
         cards.append(f"""<div class="plan-card{destacado}">
@@ -454,7 +505,7 @@ def render_comparativo() -> str:
         ("HBO Max + Amazon Prime", "✓ Permanente", "Solo promo temporal"),
         ("Precio garantizado para siempre", "✓ Sin alzas", "Sube tras 6 meses"),
         ("Cobertura nacional", "97% del Ecuador", "Limitada a ciudades"),
-        ("Soporte 24/7 con atención local", "✓ SHENCOM", "Call center genérico"),
+        ("Soporte 24/7 con atención local", "✓ Asesor dedicado", "Call center genérico"),
         ("Instalación gratis", "✓ 100% incluida", "Costo de $30–80"),
     ]
     rows = "".join(
@@ -463,31 +514,70 @@ def render_comparativo() -> str:
     )
     return f"""<div class="compare-wrap">
   <table class="compare">
-    <thead><tr><th>Beneficio</th><th>Claro · SHENCOM</th><th>Competencia típica</th></tr></thead>
+    <thead><tr><th>Beneficio</th><th>Claro con distribuidor autorizado</th><th>Competencia típica</th></tr></thead>
     <tbody>{rows}</tbody>
   </table>
 </div>"""
 
 
-def render_testimonios() -> str:
+def render_destacados_strip(cfg: dict) -> str:
+    """Strip de 3 productos destacados que sigue al hero: Internet, Claro Pay, Empresas."""
+    wa_base = cfg["empresa"]["whatsapp_e164"]
     items = [
-        ("MR", "Mariana R.", "Cliente residencial · Quito", 5,
-         "La instalación llegó al día siguiente. El asesor me explicó todo, el WiFi llega hasta el patio y nunca he tenido cortes. Me cambié desde otra operadora y la diferencia es enorme."),
-        ("DG", "Diego G.", "Gerente PYME · Guayaquil", 5,
-         "Necesitábamos 12 líneas pospago para el equipo de ventas. SHENCOM nos hizo la migración en menos de una semana y consolidó todo en una sola factura. Servicio impecable."),
-        ("LV", "Luisa V.", "Emprendedora · Cuenca", 5,
-         "Llevaba años con la competencia y siempre subían el precio. Aquí me garantizaron la tarifa para siempre. Además HBO Max viene incluido — eso solo ya cubre lo que pago de más."),
+        ("🌐", "Internet Hogar", "Fibra óptica simétrica con TV, telefonía y streaming.",
+         "Desde $23/mes", "#planes", "Ver planes"),
+        ("💳", "Cobra con tarjeta", "Convierte tu celular en terminal de pago — Visa, Mastercard, Amex, Diners.",
+         "Sin POS · Sin renta", "#claro-pay", "Conocer Claro Pay"),
+        ("🏢", "Planes Empresas", "Convergencia móvil + internet con asesor dedicado y factura única.",
+         "Desde $28.75/línea", "#empresas", "Cotizar para mi empresa"),
     ]
     cards = "".join(
-        f'<div class="testimonial">'
-        f'<div class="stars">{"★" * stars}</div>'
-        f'<blockquote>"{html.escape(quote)}"</blockquote>'
-        f'<div class="author"><div class="avatar">{html.escape(initials)}</div>'
-        f'<div class="author-info"><strong>{html.escape(nombre)}</strong><span>{html.escape(rol)}</span></div></div>'
-        f'</div>'
-        for initials, nombre, rol, stars, quote in items
+        f'<a class="destacado-card" href="{href}">'
+        f'<div class="d-icon">{icon}</div>'
+        f'<div class="d-body"><h3>{html.escape(titulo)}</h3><p>{html.escape(desc)}</p>'
+        f'<div class="d-meta"><span class="d-tag">{html.escape(tag)}</span><span class="d-cta">{html.escape(cta)} →</span></div>'
+        f'</div></a>'
+        for icon, titulo, desc, tag, href, cta in items
     )
-    return f'<div class="testimonials">{cards}</div>'
+    return f'<div class="destacados-strip">{cards}</div>'
+
+
+def render_claro_pay(cfg: dict) -> str:
+    """Sección Claro Pay — 'Cobra con tarjeta de crédito'."""
+    cp = cfg.get("claro_pay", {})
+    if not cp:
+        return ""
+    wa = wa_link(cfg["empresa"]["whatsapp_e164"],
+                 "Hola, deseo información sobre Claro Pay para cobrar con tarjeta.")
+    beneficios_items = "".join(f"<li>{html.escape(b)}</li>" for b in cp.get("beneficios", []))
+    quien_items = "".join(f"<li>{html.escape(q)}</li>" for q in cp.get("para_quien", []))
+    return f"""<section id="claro-pay" class="section section-claropay">
+  <div class="wrap">
+    <div class="claropay-grid">
+      <div class="claropay-text">
+        <span class="section-eyebrow">CLARO PAY · MEDIOS DE PAGO</span>
+        <h2>{html.escape(cp.get('titulo_comercial', 'Cobra con tarjeta de crédito'))}</h2>
+        <p class="claropay-lead">{html.escape(cp.get('descripcion', ''))}</p>
+        <ul class="claropay-beneficios">{beneficios_items}</ul>
+        <div class="claropay-ctas">
+          <a class="btn btn-primary" href="{wa}">💬 Quiero cobrar con tarjeta</a>
+          <a class="btn btn-ghost" href="#contacto">Hablar con un asesor</a>
+        </div>
+      </div>
+      <aside class="claropay-card">
+        <div class="claropay-card-head">
+          <span class="claropay-chip">Ideal para</span>
+          <h3>¿A quién le sirve?</h3>
+        </div>
+        <ul class="claropay-quien">{quien_items}</ul>
+        <div class="claropay-bullet">
+          <strong>Activación en menos de 48 h</strong>
+          <span>Sin contrato anual ni costos ocultos</span>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>"""
 
 
 def render_cta_band(cfg: dict) -> str:
@@ -526,16 +616,15 @@ def render_footer(cfg: dict, is_subpage: bool = False) -> str:
   <div class="wrap">
     <div class="cols">
       <div class="brand-col">
-        <h4>{html.escape(emp["nombre_comercial"])}</h4>
+        <h4>Distribuidor Autorizado<br><span style="color:var(--brand);font-size:14px;letter-spacing:0.04em">CLARO ECUADOR</span></h4>
         <p>{html.escape(emp["tagline"])}</p>
-        <p class="meta">RUC: {html.escape(emp["ruc"])}</p>
         <p class="meta">{html.escape(emp["direccion_matriz"])}</p>
       </div>
       <div>
         <h5>Contacto</h5>
         <a href="tel:{fmt_phone_link(emp['telefono_principal'])}">{html.escape(emp['telefono_principal'])}</a>
         <a href="{wa_link(emp['whatsapp_e164'])}">WhatsApp directo</a>
-        <a href="mailto:{html.escape(emp['email_ventas'])}">{html.escape(emp['email_ventas'])}</a>
+        <a href="mailto:{html.escape(emp['email_ventas'])}">Escribir por email</a>
         <p class="meta" style="margin-top:12px">{html.escape(emp['horario_atencion'])}</p>
       </div>
       <div>
@@ -543,16 +632,17 @@ def render_footer(cfg: dict, is_subpage: bool = False) -> str:
         {ciudades_links}
       </div>
       <div>
-        <h5>Recursos</h5>
-        <a href="{base}#planes">Planes Hogar</a>
+        <h5>Productos</h5>
+        <a href="{base}#planes">Internet Hogar</a>
+        <a href="{base}#claro-pay">Claro Pay · Cobra con tarjeta</a>
+        <a href="{base}#empresas">Planes Empresas</a>
         <a href="{base}#movil">Planes Móvil</a>
-        <a href="{base}#empresas">Para empresas</a>
         <a href="{base}#faq">Preguntas frecuentes</a>
         {('<div class="social-row" style="margin-top:14px;display:flex;gap:10px;flex-wrap:wrap">' + redes_html + '</div>') if redes_html else ''}
       </div>
     </div>
     <div class="legal">
-      © {year} {html.escape(emp["nombre_comercial"])} · Distribuidor Autorizado de Claro Ecuador · Razón social: {html.escape(emp["razon_social"])} · Todos los derechos reservados.
+      © {year} · Distribuidor Autorizado de Claro Ecuador · Todos los derechos reservados.
     </div>
   </div>
 </footer>
@@ -658,7 +748,8 @@ def render_index(cfg: dict) -> str:
     valores = render_valores()
     pymes = render_pymes(cfg)
     comparativo = render_comparativo()
-    testimonios = render_testimonios()
+    claro_pay = render_claro_pay(cfg)
+    destacados = render_destacados_strip(cfg)
     cta_band = render_cta_band(cfg)
     footer = render_footer(cfg)
     wa = wa_link(cfg["empresa"]["whatsapp_e164"])
@@ -669,18 +760,55 @@ def render_index(cfg: dict) -> str:
 <section class="hero">
   <div class="wrap">
     <div class="eyebrow"><span class="pulse"></span> Distribuidor Autorizado · Claro Ecuador</div>
-    <h1>Internet, móvil y TV de <span class="accent">Claro Ecuador</span> con instalación profesional.</h1>
-    <p class="lead">Planes hogar desde $23, pospago móvil desde $16 y atención local en {len(CIUDADES)} ciudades. Precio garantizado, cobertura nacional y respaldo oficial Claro.</p>
+    <h1>Internet, móvil, TV y <span class="accent">Claro Pay</span> — todo en un solo lugar.</h1>
+    <p class="lead">Planes hogar desde $23, cobro con tarjeta para tu negocio sin POS, y soluciones empresariales convergentes. Distribuidor autorizado oficial con atención local en {len(CIUDADES)} ciudades.</p>
     <div class="ctas">
       <a class="btn btn-primary" href="{wa}">💬 Contratar por WhatsApp</a>
       <a class="btn btn-ghost" href="#planes">Ver planes y precios</a>
     </div>
     <div class="hero-stats">
-      <div class="stat"><span class="num">+10</span><span class="lbl">años distribuidor Claro</span></div>
+      <div class="stat"><span class="num">+10</span><span class="lbl">años distribuyendo Claro</span></div>
       <div class="stat"><span class="num">{len(CIUDADES)}</span><span class="lbl">ciudades con cobertura</span></div>
       <div class="stat"><span class="num">97%</span><span class="lbl">del Ecuador con red Claro</span></div>
       <div class="stat"><span class="num">24h</span><span class="lbl">tiempo promedio instalación</span></div>
     </div>
+  </div>
+</section>
+
+{destacados}
+
+<section class="section" id="planes">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="section-eyebrow">1 · Internet Hogar</span>
+      <h2>Fibra óptica con TV, telefonía y streaming desde $23/mes</h2>
+      <p>Cuatro planes Claro Hogar de mayor a menor velocidad — del Gigabit con TV hasta los 300 Mbps básicos. Instalación 100% gratis, router WiFi incluido y precio garantizado mientras dure tu plan.</p>
+    </div>
+    {planes_internet}
+  </div>
+</section>
+
+{claro_pay}
+
+<section class="section alt" id="empresas">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="section-eyebrow">3 · Para tu empresa</span>
+      <h2>Planes Negocios PYME con consolidación de cuentas</h2>
+      <p>Convergencia móvil + internet, una sola factura, asesor dedicado y migración acompañada para equipos de cualquier tamaño.</p>
+    </div>
+    {pymes}
+  </div>
+</section>
+
+<section class="section" id="movil">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="section-eyebrow">Pospago Móvil</span>
+      <h2>Planes Plus Max con redes y WhatsApp ilimitados</h2>
+      <p>De mayor a menor: del Plus Max 40 Premium con roaming hasta el Plus Max 14 económico. Portabilidad gratuita conservando tu número en menos de 24 horas.</p>
+    </div>
+    {planes_movil}
   </div>
 </section>
 
@@ -693,48 +821,15 @@ def render_index(cfg: dict) -> str:
 <section class="section" id="por-que">
   <div class="wrap">
     <div class="section-head center">
-      <span class="section-eyebrow">Por qué SHENCOM</span>
-      <h2>Lo que hace diferente contratar Claro con nosotros</h2>
-      <p>Somos distribuidor autorizado oficial. Los servicios, equipos y facturación son 100% Claro — lo que sumamos es asesoría humana, instalación coordinada y soporte sin call center.</p>
+      <span class="section-eyebrow">Por qué elegirnos</span>
+      <h2>Lo que hace diferente contratar Claro con un distribuidor autorizado</h2>
+      <p>Operamos como distribuidor autorizado oficial de Claro Ecuador. Los servicios, equipos y facturación son 100% Claro — lo que sumamos es asesoría humana, instalación coordinada y soporte sin call center.</p>
     </div>
     {valores}
   </div>
 </section>
 
-<section class="section alt" id="planes">
-  <div class="wrap">
-    <div class="section-head">
-      <span class="section-eyebrow">Internet Hogar</span>
-      <h2>Fibra óptica simétrica con TV, telefonía y streaming</h2>
-      <p>Cuatro planes Claro Hogar con velocidades reales de 300 Mbps a 1 Gbps. Instalación 100% gratis, router WiFi incluido y precio garantizado mientras dure tu plan.</p>
-    </div>
-    {planes_internet}
-  </div>
-</section>
-
-<section class="section" id="movil">
-  <div class="wrap">
-    <div class="section-head">
-      <span class="section-eyebrow">Pospago Móvil</span>
-      <h2>Planes Plus Max con redes y WhatsApp ilimitados</h2>
-      <p>Minutos multidestino, gigas para todo y suscripciones premium incluidas. Portabilidad gratuita conservando tu número actual en menos de 24 horas.</p>
-    </div>
-    {planes_movil}
-  </div>
-</section>
-
-<section class="section alt" id="empresas">
-  <div class="wrap">
-    <div class="section-head">
-      <span class="section-eyebrow">Para tu empresa</span>
-      <h2>Planes Negocios PYME con consolidación de cuentas</h2>
-      <p>Convergencia móvil + internet, una sola factura, asesor dedicado y migración acompañada para equipos de cualquier tamaño.</p>
-    </div>
-    {pymes}
-  </div>
-</section>
-
-<section class="section" id="cobertura">
+<section class="section alt" id="cobertura">
   <div class="wrap">
     <div class="section-head">
       <span class="section-eyebrow">Cobertura</span>
@@ -745,24 +840,14 @@ def render_index(cfg: dict) -> str:
   </div>
 </section>
 
-<section class="section alt" aria-label="Comparativo">
+<section class="section" aria-label="Comparativo">
   <div class="wrap">
     <div class="section-head center">
       <span class="section-eyebrow">Comparativo</span>
-      <h2>Claro con SHENCOM vs. la competencia</h2>
+      <h2>Claro con distribuidor autorizado vs. la competencia</h2>
       <p>Una mirada honesta a lo que recibes contratando con un distribuidor autorizado Claro frente a una operadora típica.</p>
     </div>
     {comparativo}
-  </div>
-</section>
-
-<section class="section" aria-label="Testimonios">
-  <div class="wrap">
-    <div class="section-head center">
-      <span class="section-eyebrow">Clientes reales</span>
-      <h2>Lo que dicen quienes ya se cambiaron</h2>
-    </div>
-    {testimonios}
   </div>
 </section>
 
@@ -774,11 +859,12 @@ def render_index(cfg: dict) -> str:
       <p>Lo que más nos preguntan antes de contratar. Si no encuentras tu duda, escríbenos por WhatsApp.</p>
     </div>
     <div class="faq">
-      <details><summary>¿SHENCOM es Claro?</summary><p>SHENCOM es <strong>distribuidor autorizado oficial</strong> de Claro Ecuador. Los planes, equipos y facturación son 100% Claro. Lo que sumamos es asesoría humana, gestión de instalación y soporte cercano.</p></details>
+      <details><summary>¿Son ustedes Claro?</summary><p>Somos <strong>distribuidor autorizado oficial</strong> de Claro Ecuador. Los planes, equipos y facturación son 100% Claro. Lo que sumamos es asesoría humana, gestión de instalación y soporte cercano.</p></details>
       <details><summary>¿Cuánto tarda la instalación de internet hogar?</summary><p>Entre 24 y 120 horas hábiles dependiendo de la ciudad y verificación de cobertura. En Quito y Guayaquil suele ser al día siguiente. Revisa la página de tu ciudad para detalles.</p></details>
       <details><summary>¿Qué documentos necesito para contratar?</summary><p>Cédula de identidad vigente del titular y comprobante de domicilio (planilla de luz, agua o teléfono no mayor a 3 meses). Para empresas: RUC y nombramiento del representante legal.</p></details>
-      <details><summary>¿Hacen portabilidad de número desde otra operadora?</summary><p>Sí, la portabilidad es gratuita. Conservas tu número actual y la activación se completa en menos de 24 horas hábiles. Nosotros gestionamos todo el trámite.</p></details>
-      <details><summary>¿El precio sube después de unos meses?</summary><p>No. Lo que contratas es lo que pagas mientras dure tu plan. No tenemos esquemas promocionales que se disparan a los 6 meses como otras operadoras.</p></details>
+      <details><summary>¿Hacen portabilidad de número desde otra operadora?</summary><p>Sí, la portabilidad es gratuita. Conservas tu número actual y la activación se completa en menos de 24 horas hábiles. Gestionamos todo el trámite.</p></details>
+      <details><summary>¿El precio sube después de unos meses?</summary><p>No. Lo que contratas es lo que pagas mientras dure tu plan. No usamos esquemas promocionales que se disparan a los 6 meses como otras operadoras.</p></details>
+      <details><summary>¿Cómo funciona Claro Pay para cobrar con tarjeta?</summary><p>Activamos tu cuenta Claro Pay y tu celular se convierte en terminal de pago: aceptas Visa, Mastercard, Amex y Diners sin POS físico ni contrato anual. Activación en menos de 48 horas.</p></details>
       <details><summary>¿Tienen planes para empresas?</summary><p>Sí. Manejamos los Planes Negocios Plus de Claro con consolidación en una sola factura, asesor dedicado, migración acompañada y descuentos por volumen. Mira la sección <a href="#empresas">Para tu empresa</a>.</p></details>
       <details><summary>¿Qué incluye la instalación gratis?</summary><p>Visita técnica, cableado interno hasta el punto que elijas, configuración del router WiFi y pruebas de velocidad. No hay costos ocultos: la instalación es 100% gratuita en todos los planes hogar.</p></details>
     </div>
@@ -794,9 +880,9 @@ def render_index(cfg: dict) -> str:
 
 def render_ciudad(cfg: dict, ciudad: dict) -> str:
     dominio = cfg["sitio"]["dominio"]
-    title = f"Planes Claro en {ciudad['nombre']} | SHENCOM Distribuidor Autorizado"
-    desc = (f"Planes Claro internet hogar y pospago en {ciudad['nombre']}. "
-            f"Distribuidor autorizado SHENCOM con cobertura en {', '.join(ciudad['sectores'][:4])} y más. "
+    title = f"Planes Claro en {ciudad['nombre']} | Distribuidor Autorizado"
+    desc = (f"Planes Claro internet hogar, pospago móvil y Claro Pay en {ciudad['nombre']}. "
+            f"Distribuidor autorizado oficial con cobertura en {', '.join(ciudad['sectores'][:4])} y más. "
             f"Instalación en {ciudad['tiempo_instalacion']}.")
     canonical = f"{dominio}/planes-claro/{ciudad['slug']}/"
     head = render_head(title, desc, canonical, cfg, is_subpage=True)
@@ -806,7 +892,7 @@ def render_ciudad(cfg: dict, ciudad: dict) -> str:
 
     tel_zonal = cfg["telefonos_zonales"].get(ciudad["nombre"], cfg["empresa"]["telefono_principal"])
     wa = wa_link(cfg["empresa"]["whatsapp_e164"],
-                 f"Hola SHENCOM, deseo información sobre planes Claro en {ciudad['nombre']}.")
+                 f"Hola, deseo información sobre planes Claro en {ciudad['nombre']}.")
 
     sectores_chips = "".join(f'<span class="chip">{html.escape(s)}</span>' for s in ciudad["sectores"])
     planes_internet = render_planes_grid(cfg, "internet_hogar")
@@ -877,7 +963,7 @@ def render_ciudad(cfg: dict, ciudad: dict) -> str:
     <div class="section-head">
       <span class="section-eyebrow">Sectores</span>
       <h2>Zonas de {html.escape(ciudad['nombre'])} con cobertura Claro</h2>
-      <p>SHENCOM gestiona instalaciones en estos sectores. Si tu zona no aparece, escríbenos por WhatsApp y validamos disponibilidad puntual en tu dirección.</p>
+      <p>Como distribuidor autorizado gestionamos instalaciones Claro en estos sectores. Si tu zona no aparece, escríbenos por WhatsApp y validamos disponibilidad puntual en tu dirección.</p>
     </div>
     <div class="chips">{sectores_chips}</div>
   </div>
@@ -905,10 +991,10 @@ def render_ciudad(cfg: dict, ciudad: dict) -> str:
   </div>
 </section>
 
-<section class="section" aria-label="Por qué SHENCOM">
+<section class="section" aria-label="Por qué elegirnos">
   <div class="wrap">
     <div class="section-head center">
-      <span class="section-eyebrow">Por qué SHENCOM</span>
+      <span class="section-eyebrow">Por qué elegirnos</span>
       <h2>Razones para contratar Claro con un distribuidor autorizado</h2>
     </div>
     {valores}
@@ -919,7 +1005,7 @@ def render_ciudad(cfg: dict, ciudad: dict) -> str:
   <div class="wrap">
     <div class="section-head center">
       <span class="section-eyebrow">Comparativo</span>
-      <h2>Claro · SHENCOM vs. otras operadoras en {html.escape(ciudad['nombre'])}</h2>
+      <h2>Claro con distribuidor autorizado vs. otras operadoras en {html.escape(ciudad['nombre'])}</h2>
     </div>
     {comparativo}
   </div>
@@ -935,7 +1021,7 @@ def render_ciudad(cfg: dict, ciudad: dict) -> str:
       <details><summary>¿Hay cobertura de fibra Claro en mi sector de {html.escape(ciudad['nombre'])}?</summary><p>Cubrimos los principales sectores: {html.escape(', '.join(ciudad['sectores'][:5]))} entre otros. Para verificar tu dirección exacta, contáctanos por WhatsApp y validamos en minutos.</p></details>
       <details><summary>¿Cuánto tarda la instalación en {html.escape(ciudad['nombre'])}?</summary><p>Entre {html.escape(ciudad['tiempo_instalacion'])} desde la confirmación del contrato y verificación de cobertura. Coordinamos visita técnica en horario laboral.</p></details>
       <details><summary>¿A qué número llamo para soporte local en {html.escape(ciudad['nombre'])}?</summary><p>Atención zonal directa en {html.escape(tel_zonal)}. También puedes escribirnos por WhatsApp para agilizar la respuesta.</p></details>
-      <details><summary>¿Puedo migrar desde otra operadora a Claro en {html.escape(ciudad['nombre'])}?</summary><p>Sí, la portabilidad es gratuita, conservas tu número y SHENCOM gestiona todo el trámite por ti. La activación demora menos de 24 horas hábiles.</p></details>
+      <details><summary>¿Puedo migrar desde otra operadora a Claro en {html.escape(ciudad['nombre'])}?</summary><p>Sí, la portabilidad es gratuita, conservas tu número y gestionamos todo el trámite por ti. La activación demora menos de 24 horas hábiles.</p></details>
       <details><summary>¿La instalación tiene algún costo en {html.escape(ciudad['nombre'])}?</summary><p>No. La instalación de los planes hogar es 100% gratuita: incluye visita técnica, cableado interno, configuración del router y pruebas de velocidad.</p></details>
     </div>
   </div>
